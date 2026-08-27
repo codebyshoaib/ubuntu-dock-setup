@@ -1,33 +1,13 @@
 # ubuntu-dock-setup
 
-<br />
+![Floating Ubuntu Dock — full screen for your windows, no strut, no wasted pixels](docs/hero-banner.jpg)
 
-<div align="center">
-
-### Floating Ubuntu Dock
-
-**Full screen for your windows — no strut, no wasted pixels.**
-
-<br />
-
-<img
-  src="docs/hero-crop.jpg"
-  alt="Centered floating translucent Ubuntu Dock with running indicators under the icons"
-  width="880"
-/>
-
-<br />
-
-`curl -fsSL …/dock.sh | bash` · GTK config UI · indicators stay under icons
-
-[Install](#one-shot-setup) ·
-[Configure UI](#configure-from-ui) ·
-[Screenshot](#screenshot) ·
-[Indicators](#running-indicator-position)
-
-</div>
-
-<br />
+<p align="center">
+  <a href="#one-shot-setup">Install</a> ·
+  <a href="#configure-from-ui">Configure UI</a> ·
+  <a href="#screenshot">Screenshot</a> ·
+  <a href="#running-indicator-position">Indicators</a>
+</p>
 
 ---
 
@@ -44,13 +24,7 @@ shot and verifies the result.
 
 Full desktop view of the floating dock (original capture — not modified):
 
-<p align="center">
-  <img
-    src="docs/hero.jpg"
-    alt="Full desktop screenshot: floating bottom dock on a dark Ubuntu desktop"
-    width="920"
-  />
-</p>
+![Full desktop screenshot: floating bottom dock on a dark Ubuntu desktop](docs/hero.jpg)
 
 <p align="center"><sub>Floating pill dock · translucent bar · running indicator under the active app</sub></p>
 
@@ -125,8 +99,10 @@ Needs `python3` and GTK bindings:
 sudo apt install python3-gi gir1.2-gtk-3.0
 ```
 
-The UI reads the live `dash-to-dock` settings, applies changes immediately via
-`gsettings`, and can **Reset to script defaults** (same values as `./dock.sh apply`).
+The UI reads the live `dash-to-dock` settings and **applies changes as you edit**
+(no Apply button). Drag sliders with click-and-hold (mouse-wheel on sliders is
+disabled); use **− / +** or arrow keys for small steps. You can still **Reset to
+script defaults** (same values as `./dock.sh apply`).
 
 When running from one-shot (`curl | bash`), `dock.sh` auto-downloads `dock-config.py`
 to `${XDG_CACHE_HOME:-~/.cache}/ubuntu-dock-setup/` if the file is not present locally.
@@ -195,8 +171,10 @@ By default Ubuntu Dock rotates the red/window indicators to the dock edge
 ./dock.sh indicators-status   # active | inactive
 ```
 
-Or use the checkbox in `./dock.sh config`. Restart GNOME Shell afterwards
-(X11: Alt+F2 → `r` → Enter; Wayland: log out/in).
+Or use the checkbox in `./dock.sh config`. This patches the **system** Ubuntu Dock
+file (needs `sudo`) because Ubuntu loads the dock from `/usr/share`, not
+`~/.local`. Restart GNOME Shell afterwards (X11: Alt+F2 → `r` → Enter; Wayland:
+log out/in).
 
 ## Requirements
 
